@@ -50,7 +50,9 @@ if ( ! function_exists( 'ivy_from_assoc' ) ) {
 				}
 			}
 		} else {
-			$value = call_user_func( $sanitize, $value );
+			if( is_callable( $sanitize ) ) {
+				$value = call_user_func( $sanitize, $value );
+			}
 		}
 
 		return $value;
